@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "#": {
+      "item": "minecraft:glass_bottle"
+    },
+    "*": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "  *",
+    " #",
+    "X  "
+  ],
+  "result": {
+    "item": "illness_not_included:syringe"
+  },
+  "show_notification": true
+}

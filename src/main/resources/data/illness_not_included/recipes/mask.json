@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "minecraft:white_wool"
+    },
+    "#": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "#X#"
+  ],
+  "result": {
+    "item": "illness_not_included:mask"
+  },
+  "show_notification": true
+}

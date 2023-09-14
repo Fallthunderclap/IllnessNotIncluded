@@ -17,7 +17,7 @@ public class ModCreativeModeTabs {
     }
 
     public static final RegistryObject<CreativeModeTab> ILLNESS_NOT_INCLUDED =
-            CREATIVE_MODE_TABS.register("Illness Not Included",
+            CREATIVE_MODE_TABS.register("illness_not_included",
                     () -> CreativeModeTab.builder()
                             .icon(() -> new ItemStack(ModItems.PILL.get()))
                             .title(Component.translatable("creative_tab.illness_not_included_tab"))

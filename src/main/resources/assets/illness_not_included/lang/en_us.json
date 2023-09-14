@@ -1,6 +1,10 @@
 {
+  "item.illness_not_included.bacteria": "Bacteria",
   "item.illness_not_included.mask": "Mask",
+  "item.illness_not_included.mold": "Mold",
   "item.illness_not_included.pill": "Pill",
-
+  "item.illness_not_included.syringe": "Syringe",
+  "item.illness_not_included.vaccine": "Vaccine",
+  "item.illness_not_included.virus": "Virus",
   "creative_tab.illness_not_included_tab": "Illness Not Included"
 }

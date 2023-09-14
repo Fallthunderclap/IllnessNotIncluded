@@ -53,10 +53,7 @@ public class IllnessNotIncluded {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(ModItems.MASK);
-            event.accept(ModItems.PILL);
-        }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

@@ -22,8 +22,13 @@ public class ModCreativeModeTabs {
                             .icon(() -> new ItemStack(ModItems.PILL.get()))
                             .title(Component.translatable("creative_tab.illness_not_included_tab"))
                             .displayItems((pParameters, pOutput) -> {
+                                pOutput.accept(ModItems.BACTERIA.get());
                                 pOutput.accept(ModItems.MASK.get());
+                                pOutput.accept(ModItems.MOLD.get());
                                 pOutput.accept(ModItems.PILL.get());
+                                pOutput.accept(ModItems.SYRINGE.get());
+                                pOutput.accept(ModItems.VACCINE.get());
+                                pOutput.accept(ModItems.VIRUS.get());
                             })
                             .build());
 }

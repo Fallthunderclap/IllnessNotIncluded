@@ -1,3 +1,6 @@
 {
-  "item.illness_not_included.surgical_mask": "Surgical Mask"
+  "item.illness_not_included.mask": "Mask",
+  "item.illness_not_included.pill": "Pill",
+
+  "creative_tab.illness_not_included_tab": "Illness Not Included"
 }

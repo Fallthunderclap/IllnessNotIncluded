@@ -6,5 +6,7 @@
   "item.illness_not_included.syringe": "Syringe",
   "item.illness_not_included.vaccine": "Vaccine",
   "item.illness_not_included.virus": "Virus",
-  "creative_tab.illness_not_included_tab": "Illness Not Included"
+  "creative_tab.illness_not_included_tab": "Illness Not Included",
+  "key.category.illness_not_included": "Illness Not Included",
+  "key.illness_not_included.drink": "Drink"
 }

@@ -3,7 +3,7 @@ package net.illnessnotincluded;
 import com.mojang.logging.LogUtils;
 import net.illnessnotincluded.item.ModCreativeModeTabs;
 import net.illnessnotincluded.item.ModItems;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.illnessnotincluded.networking.ModNetworking;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -48,7 +48,7 @@ public class IllnessNotIncluded {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(ModNetworking::register);
     }
 
     // Add the example block item to the building blocks tab

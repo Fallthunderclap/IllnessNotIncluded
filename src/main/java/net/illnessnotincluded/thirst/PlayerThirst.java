@@ -6,8 +6,8 @@ import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 @AutoRegisterCapability
 public class PlayerThirst {
     private float thirst;
-    private final float MIN_THIRST = 0;
-    private final float MAX_THIRST = 10;
+    public static final float MIN_THIRST = 0;
+    public static float MAX_THIRST = 10;
 
     public float getThirst() {
         return thirst;
@@ -15,6 +15,10 @@ public class PlayerThirst {
 
     public void addThirst(float add) {
         this.thirst = Math.min(thirst + add, MAX_THIRST);
+    }
+
+    public void setThirst(float thirst) {
+        this.thirst = thirst;
     }
 
     public void subThirst(float sub) {

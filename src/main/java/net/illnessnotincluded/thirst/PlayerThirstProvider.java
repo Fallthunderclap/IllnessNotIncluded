@@ -21,6 +21,7 @@ public class PlayerThirstProvider implements ICapabilityProvider, INBTSerializab
     private PlayerThirst createPlayerThirst() {
         if (this.thirst == null) {
             this.thirst = new PlayerThirst();
+            this.thirst.setThirst(10);
         }
         return this.thirst;
     }

@@ -19,14 +19,14 @@ public class ThirstHUD {
         RenderSystem.setShaderTexture(0, EMPTY_THIRST);
 
         for (int i = 0; i < 10; i++) {
-            guiGraphics.blit(EMPTY_THIRST, x - 94 + (i * 9), y - 54, 0, 0, 12, 12, 12, 12);
+            guiGraphics.blit(EMPTY_THIRST, x - 93 + (i * 8), y - 61, 0, 0, 12, 12, 12, 12);
         }
 
 
         RenderSystem.setShaderTexture(0, FILLED_THIRST);
         for (int i = 0; i < 10; i++) {
             if (ClientThirstData.getPlayerThirst() > i) {
-                guiGraphics.blit(FILLED_THIRST, x - 94 + (i * 9), y - 54, 0, 0, 12, 12, 12, 12);
+                guiGraphics.blit(FILLED_THIRST, x - 93 + (i * 8), y - 61, 0, 0, 12, 12, 12, 12);
             } else {
                 break;
             }

@@ -4,14 +4,23 @@ package net.illnessnotincluded.event;
 import net.illnessnotincluded.IllnessNotIncluded;
 import net.illnessnotincluded.networking.ModNetworking;
 import net.illnessnotincluded.networking.packet.ThirstDataSyncS2CPacket;
+import net.illnessnotincluded.thirst.PlayerThirst;
 import net.illnessnotincluded.thirst.PlayerThirstProvider;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.living.LivingBreatheEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
@@ -31,13 +40,9 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerCloned(PlayerEvent.Clone event) {
         if (event.isWasDeath()) {
-            event.getOriginal().reviveCaps();
-            event.getOriginal().getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(oldStore -> {
-                event.getEntity().getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(newStore -> {
-                    newStore.copyThirst(oldStore);
-                });
+            event.getEntity().getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(newStore -> {
+                newStore.setThirst(PlayerThirst.MAX_THIRST);
             });
-            event.getOriginal().invalidateCaps();
         }
     }
 
@@ -46,14 +51,14 @@ public class ModEvents {
         if (event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(playerThirst -> {
                 if (playerThirst.getThirst() > 0 && event.player.getRandom().nextFloat() < 0.005F) {
-                    if (event.player.isSwimming()) playerThirst.subThirst(0.01F);
-                    if (event.player.isSprinting()) playerThirst.subThirst(0.1F);
+                    if (event.player.isSwimming()) playerThirst.subThirst(0.1F);
+                    if (event.player.isSprinting()) playerThirst.subThirst(0.5F);
                     if (event.player.isOnFire()) playerThirst.subThirst(1F);
 
                     ModNetworking.sendToPlayer(new ThirstDataSyncS2CPacket(playerThirst.getThirst()), (ServerPlayer) event.player);
 
                 } else if (playerThirst.getThirst() == 0 && event.player.getRandom().nextFloat() < 0.01F) {
-                    //TODO: Damage Player
+                    event.player.hurt(event.player.damageSources().starve(), 1.0F);
                 }
             });
         }

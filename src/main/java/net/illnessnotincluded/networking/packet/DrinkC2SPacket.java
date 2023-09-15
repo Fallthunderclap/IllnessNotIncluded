@@ -32,14 +32,10 @@ public class DrinkC2SPacket {
             ServerPlayer player = context.getSender();
             ServerLevel level = player.serverLevel().getLevel();
 
-            if (player.isHolding(Items.WATER_BUCKET) || hasWaterAround(player, level)) {
+            if (hasWaterAround(player, level)) {
                 level.playSound(null, player.blockPosition(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
                 player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
                     thirst.addThirst(3F);
-                    ModNetworking.sendToPlayer(new ThirstDataSyncS2CPacket(thirst.getThirst()), player);
-                });
-            } else {
-                player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
                     ModNetworking.sendToPlayer(new ThirstDataSyncS2CPacket(thirst.getThirst()), player);
                 });
             }
